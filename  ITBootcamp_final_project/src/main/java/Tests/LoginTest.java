@@ -30,5 +30,24 @@ public class LoginTest extends BasicTest {
         );
     }
 
+    @Test(priority = 30)
+    public void displayErrorsWhenUserDoesNotExist(){
+        String email = "non-existing-user@gmal.com";
+        String password = "password123";
+
+        navPage.getLoginButton().click();
+        loginPage.getEmailInput().sendKeys(email);
+        loginPage.getPasswrodInput().sendKeys(password);
+        loginPage.getLoginButton().click();
+        messagePopUpPage.waitForPopUpMessageToBeVisible();
+
+        Assert.assertEquals(messagePopUpPage.unsuccessfullyLoginMessage().getText(),
+                "User does not exists",
+                "[Error] Wrong error message for unsuccessfully login is displayed.");
+
+        Assert.assertTrue(driver.getCurrentUrl().contains("/login"),
+                "[Error] Page URL should contain '/login' ");
+    }
+
 
 }
