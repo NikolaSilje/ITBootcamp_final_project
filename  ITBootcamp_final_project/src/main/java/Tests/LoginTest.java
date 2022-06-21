@@ -1,5 +1,6 @@
 package Tests;
 
+import javafx.scene.layout.Priority;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -75,9 +76,32 @@ public class LoginTest extends BasicTest {
                 "[Error] Wrong error message for wrong password login is displayed.");
         Assert.assertTrue(driver.getCurrentUrl().contains("/login"),
                 "[Error] Page URL should contain '/login' ");
+    }
+    @Test(priority = 50)
+    //Test #5: Login
+    //Podaci:
+    //email: admin@admin.com
+    //password: 12345
+    //Koraci:
+    //Klik na login dugme iz navigacije
+    //Popuniti login formu podacima za logovanje
+    //Verifikovati da se u url-u stranice javlja /home ruta
+    public void successfulLogin() throws InterruptedException {
+        String email = "admin@admin.com";
+        String password = "12345";
 
-
-
+        navPage.getLoginButton().click();
+        loginPage.getEmailInput().sendKeys(email);
+        loginPage.getPasswrodInput().sendKeys(password);
+        loginPage.getLoginButton().click();
+        Thread.sleep(2000);
+        Assert.assertTrue(driver.getCurrentUrl().contains("/home"),
+                "[Error] Page URL should contain '/home' ");;
+    }
+    @Test(priority = 60)
+    public void logout (){
+        navPage.visibilityOfLogoutButton();
+        navPage.getLogoutButton().click();
     }
 
 
