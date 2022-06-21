@@ -48,6 +48,38 @@ public class LoginTest extends BasicTest {
         Assert.assertTrue(driver.getCurrentUrl().contains("/login"),
                 "[Error] Page URL should contain '/login' ");
     }
+    //
+//    Test #4: Displays errors when password is wrong
+//    Podaci:
+//    email: admin@admin.com
+//    password: password123
+//    Koraci:
+//    Klik na login dugme iz navigacije
+//    Popuniti login formu podacima za logovanje
+//    Klik na login dugme
+//    Sacekati da popu za prikaz poruke bude vidljiv
+//    Verifikovati da greska sadrzi poruku Wrong password
+//    Verifikovati da se u url-u stranice javlja /login ruta
+    @Test(priority = 40)
+    public void displayErrorsWhenPassIsWrong(){
+        String email = "admin@admin.com";
+        String password = "password123";
+
+        navPage.getLoginButton().click();
+        loginPage.getEmailInput().sendKeys(email);
+        loginPage.getPasswrodInput().sendKeys(password);
+        loginPage.getLoginButton().click();
+        messagePopUpPage.waitForPopUpMessageToBeVisible();
+        Assert.assertEquals(messagePopUpPage.unsuccessfullyLoginMessage().getText(),
+                "Wrong password",
+                "[Error] Wrong error message for wrong password login is displayed.");
+        Assert.assertTrue(driver.getCurrentUrl().contains("/login"),
+                "[Error] Page URL should contain '/login' ");
+
+
+
+    }
+
 
 
 }
