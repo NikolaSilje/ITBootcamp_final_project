@@ -31,5 +31,10 @@ public class NavPage {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.className("btnLogout"))));
     }
+    public WebElement getSignUpButton(){
+        return driver.findElement(By.xpath("//*[contains(@class, 'v-toolbar__items')]/a[4]"));
+
+    }
+
 
 }
