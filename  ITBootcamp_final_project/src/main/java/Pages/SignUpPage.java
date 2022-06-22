@@ -24,5 +24,8 @@ public class SignUpPage {
     public WebElement getNameInput(){
         return driver.findElement(By.id("name"));
     }
+    public WebElement getSigneMeUpButton(){
+        return driver.findElement(By.className("v-btn--contained"));
+    }
 
 }
