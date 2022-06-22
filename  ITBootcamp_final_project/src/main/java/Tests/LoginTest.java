@@ -20,14 +20,14 @@ public class LoginTest extends BasicTest {
     public void checksInputTypes() {
         navPage.getLoginButton().click();
         Assert.assertEquals(
-                driver.findElement(By.id("email")).getAttribute("type"),
+                loginPage.getEmailInput().getAttribute("type"),
                 "email",
-                "[Error] Email input field attribute type should be - email"
+                "[Error] Email input field should be  'email' by type"
         );
         Assert.assertEquals(
-                driver.findElement(By.id("password")).getAttribute("type"),
+                loginPage.getPasswrodInput().getAttribute("type"),
                 "password",
-                "[Error] Email input field should be email by type"
+                "[Error] Password input field should be 'password' by type"
         );
     }
 
@@ -49,18 +49,7 @@ public class LoginTest extends BasicTest {
         Assert.assertTrue(driver.getCurrentUrl().contains("/login"),
                 "[Error] Page URL should contain '/login' ");
     }
-    //
-//    Test #4: Displays errors when password is wrong
-//    Podaci:
-//    email: admin@admin.com
-//    password: password123
-//    Koraci:
-//    Klik na login dugme iz navigacije
-//    Popuniti login formu podacima za logovanje
-//    Klik na login dugme
-//    Sacekati da popu za prikaz poruke bude vidljiv
-//    Verifikovati da greska sadrzi poruku Wrong password
-//    Verifikovati da se u url-u stranice javlja /login ruta
+
     @Test(priority = 40)
     public void displayErrorsWhenPassIsWrong(){
         String email = "admin@admin.com";
@@ -78,14 +67,7 @@ public class LoginTest extends BasicTest {
                 "[Error] Page URL should contain '/login' ");
     }
     @Test(priority = 50)
-    //Test #5: Login
-    //Podaci:
-    //email: admin@admin.com
-    //password: 12345
-    //Koraci:
-    //Klik na login dugme iz navigacije
-    //Popuniti login formu podacima za logovanje
-    //Verifikovati da se u url-u stranice javlja /home ruta
+
     public void successfulLogin() throws InterruptedException {
         String email = "admin@admin.com";
         String password = "12345";
