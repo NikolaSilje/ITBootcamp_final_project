@@ -22,4 +22,11 @@ public class MessagePopUpPage {
     public WebElement unsuccessfullyLoginMessage() {
         return driver.findElement(By.tagName("li"));
     }
+    public void waitForVerifyYourAccountToBeVisible(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.className("v-card__title"))));
+    }
+    public WebElement getTextFromVerifyYourAccountPopUp(){
+        return driver.findElement(By.className("v-card__title"));
+    }
 }
