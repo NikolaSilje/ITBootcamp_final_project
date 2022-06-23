@@ -32,4 +32,11 @@ public class MessagePopUpPage {
     public WebElement getCloseButtoneFromVerifyYourAccount(){
         return driver.findElement(By.className("btnClose"));
     }
+    public WebElement getTextFromSuccessfullySavedMessage() {
+        return driver.findElement(By.className("success"));
+    }
+    public void waitForPopUpSavedSuccessfullySavedToBeVisible(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.className("success"))));
+    }
 }

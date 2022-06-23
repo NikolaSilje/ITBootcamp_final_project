@@ -25,5 +25,8 @@ public class CitiesPage {
     public WebElement getInputName(){
         return driver.findElement(By.id("name"));
     }
+    public WebElement getSaveButton(){
+        return driver.findElement(By.className("btnSave"));
+    }
 
 }

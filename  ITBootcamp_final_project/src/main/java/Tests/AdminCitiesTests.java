@@ -30,4 +30,20 @@ public class AdminCitiesTests extends BasicTest{
                 "text",
                 "[Error] Name input field should be  'text' by type");
     }
+    @Test(priority = 30)
+
+    public void createNewCity(){
+        String city = "Lost City";
+
+        navPage.getAdminButton().click();
+        navPage.getCitiesButton().click();
+        citiesPage.getNewItemButton().click();
+        citiesPage.waitForEditOrCreateDialogToBeVisible();
+        citiesPage.getInputName().sendKeys(city);
+        citiesPage.getSaveButton().click();
+        messagePopUpPage.waitForPopUpSavedSuccessfullySavedToBeVisible();
+        Assert.assertTrue(messagePopUpPage.getTextFromSuccessfullySavedMessage().getText().
+                        contains("Saved successfully"),
+                "[Error] Wrong message for successfully saved is displayed.");
+    }
 }
