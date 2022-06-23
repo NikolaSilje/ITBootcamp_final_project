@@ -29,4 +29,7 @@ public class MessagePopUpPage {
     public WebElement getTextFromVerifyYourAccountPopUp(){
         return driver.findElement(By.className("v-card__title"));
     }
+    public WebElement getCloseButtoneFromVerifyYourAccount(){
+        return driver.findElement(By.className("btnClose"));
+    }
 }

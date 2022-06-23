@@ -9,7 +9,7 @@ public class SignUpTest extends BasicTest {
 
 
     @Test(priority = 10)
-    public void visitTheSignUpPage(){
+    public void visitTheSignUpPage()  {
 
         navPage.getSignUpButton().click();
         Assert.assertTrue(driver.getCurrentUrl().contains("/signup"),
@@ -39,7 +39,6 @@ public class SignUpTest extends BasicTest {
         String confirmPassword = "12345";
 
         navPage.getSignUpButton().click();
-
         Assert.assertTrue(driver.getCurrentUrl().contains("/signup"),
                 "[Error] Page URL should contain '/signup' ");
 
@@ -49,16 +48,19 @@ public class SignUpTest extends BasicTest {
         signupPage.getConfirmPasswordInput().sendKeys(confirmPassword);
         signupPage.getSigneMeUpButton().click();
         messagePopUpPage.waitForPopUpMessageToBeVisible();
+        Assert.assertTrue(driver.getCurrentUrl().contains("/signup"),
+                "[Error] Page URL should contain '/signup' ");
         Assert.assertEquals(messagePopUpPage.unsuccessfullyLoginMessage().getText(),
                 "E-mail already exists",
                 "[Error] Proper error message is not displayed, it shoud be 'E-mail already exists'.");
-        Assert.assertTrue(driver.getCurrentUrl().contains("/signup"),
-                "[Error] Page URL should contain '/signup' ");
+
+
+
 
     }
 
     @Test(priority = 40)
-    public void successfulSignUp() {
+    public void successfulSignUp() throws InterruptedException {
         String name = "Nikola Vasiljevic";
         String email = "nikola.vasiljevic@itbootcamp.rs";
         String password = "12345";
@@ -70,11 +72,16 @@ public class SignUpTest extends BasicTest {
         signupPage.getPasswrodInput().sendKeys(password);
         signupPage.getConfirmPasswordInput().sendKeys(confirmPassword);
         signupPage.getSigneMeUpButton().click();
+
         Assert.assertTrue(driver.getCurrentUrl().contains("/home"),
                 "[Error] Page URL should contain '/home' ");
         Assert.assertEquals(messagePopUpPage.getTextFromVerifyYourAccountPopUp().getText(),
                 "IMPORTANT: Verify your account",
                 "Proper message is not displayed, it shoud be 'IMPORTANT: Verify your account'");
+        messagePopUpPage.getCloseButtoneFromVerifyYourAccount().click();
+        navPage.getLogOutButton().click();
+
+
 
 
     }

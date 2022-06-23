@@ -33,8 +33,11 @@ public class NavPage {
     }
     public WebElement getSignUpButton(){
         return driver.findElement(By.xpath("//*[contains(@class, 'v-toolbar__items')]/a[4]"));
-
     }
+    public WebElement getLogOutButton(){
+        return driver.findElement(By.className("btnLogout"));
+    }
+
 
 
 }
