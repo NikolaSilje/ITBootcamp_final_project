@@ -37,6 +37,12 @@ public class NavPage {
     public WebElement getLogOutButton(){
         return driver.findElement(By.className("btnLogout"));
     }
+    public WebElement getAdminButton(){
+        return driver.findElement(By.className("btnAdmin"));
+    }
+    public WebElement getCitiesButton(){
+        return driver.findElement(By.className("btnAdminCities"));
+    }
 
 
 
