@@ -18,7 +18,20 @@ public class NavPage {
 
     public WebElement getENbutton(){
         driver.findElement(By.className("btnLocaleActivation")).click();
-        return driver.findElement(By.id("list-item-73"));
+        return driver.findElement(By.className("btnEN"));
+    }
+
+    public WebElement getESbutton() {
+        driver.findElement(By.className("btnLocaleActivation")).click();
+        return driver.findElement(By.className("btnES"));
+    }
+    public WebElement getFRbutton() {
+        driver.findElement(By.className("btnLocaleActivation")).click();
+        return driver.findElement(By.id("btnFR"));
+    }
+    public WebElement getCNbutton() {
+        driver.findElement(By.className("btnLocaleActivation")).click();
+        return driver.findElement(By.id("btnCN"));
     }
 
     public WebElement getLoginButton() {
@@ -42,6 +55,13 @@ public class NavPage {
     }
     public WebElement getCitiesButton(){
         return driver.findElement(By.className("btnAdminCities"));
+    }
+    public void waitForLoginPageToLoadUp() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.urlContains("/login"));
+    }
+    public WebElement getHeaderElement(){
+        return driver.findElement(By.tagName("h1"));
     }
 
 
