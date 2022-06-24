@@ -19,6 +19,12 @@ public class AuthRuthTests extends BasicTest {
         Assert.assertTrue(this.driver.getCurrentUrl().contains("/login"),
                 "Current site path do not contains /login in URL");
     }
-    
+    public void forbidsVisitsToAdminCitiesUrlifNotAuthenticated() {
+        driver.get(baseUrl + "//admin/cities");
+        navPage.waitForLoginPageToLoadUp();
+        Assert.assertTrue(this.driver.getCurrentUrl().contains("/login"),
+                "Current site path do not contains /login in URL");
+
 }
+    }
 
