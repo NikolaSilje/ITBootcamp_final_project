@@ -28,4 +28,5 @@ public class SignUpPage {
         return driver.findElement(By.className("v-btn--contained"));
     }
 
+
 }

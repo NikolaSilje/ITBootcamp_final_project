@@ -26,7 +26,7 @@ public class MessagePopUpPage {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.className("v-card__title"))));
     }
-    public WebElement getTextFromVerifyYourAccountPopUp(){
+    public WebElement getTextFromDialogue(){
         return driver.findElement(By.className("v-card__title"));
     }
     public WebElement getCloseButtoneFromVerifyYourAccount(){
