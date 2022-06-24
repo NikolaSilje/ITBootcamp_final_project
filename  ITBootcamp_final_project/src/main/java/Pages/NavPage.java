@@ -27,11 +27,11 @@ public class NavPage {
     }
     public WebElement getFRbutton() {
         driver.findElement(By.className("btnLocaleActivation")).click();
-        return driver.findElement(By.id("btnFR"));
+        return driver.findElement(By.className("btnFR"));
     }
     public WebElement getCNbutton() {
         driver.findElement(By.className("btnLocaleActivation")).click();
-        return driver.findElement(By.id("btnCN"));
+        return driver.findElement(By.className("btnCN"));
     }
 
     public WebElement getLoginButton() {
@@ -62,6 +62,10 @@ public class NavPage {
     }
     public WebElement getHeaderElement(){
         return driver.findElement(By.tagName("h1"));
+    }
+    public WebElement getLanguageElement(){
+       return driver.findElement(By.className("btnLocaleActivation"));
+
     }
 
 
